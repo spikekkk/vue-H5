@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>泽钛造水</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" viewport-fit="cover"/>
+    <link rel="stylesheet" href="css/pay.css">
+    <script src="js/index.js"></script>
+</head>
+<body>
+
+<!-- nav bar -->
+<nav class="navBar">
+    <p class="navBar-tit icon2">水量充值</p>
+    <a href="#" class="back" onclick="javascript:history.back(-1)"></a>
+</nav>
+
+<!-- content -->
+<section id="pay">
+    <div class="inner">
+
+        <div class="topPrice">
+            <div class="bg1 moveL"></div>
+            <div class="bg2 moveR"></div>
+            <div class="content">
+                <div class="tit">2元=1L水</div>
+                <div class="price">2.00</div>
+                <div class="desc">此次充值将获得附赠的25元水费</div>
+            </div>
+        </div>
+
+        <section class="payType">
+            <p class="payType-tit">充值类型</p>
+            <ul id="payTypeList">
+                <li>
+                    <a href="javascript:;" class="wx-pay cur">微信支付（默认）
+                        <span class="typeStatus"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="other-pay">账户余额支付
+                        <span class="typeStatus"></span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <a id="toPay" class="btn btn-pay" href="javascript:;">去支付</a>
+    </div>
+</section>
+
+<!-- tab bar -->
+<section class="tabBar">
+    <a href="index.html" class="home">
+        <span class="icon icon-home"></span>
+        首页
+    </a>
+    <a href="order.html" class="yuyue">
+        <span class="icon icon-yuyue"></span>
+        预约
+    </a>
+    <a href="me.html" class="me">
+        <span class="icon icon-me"></span>
+        个人中心
+    </a>
+    <a href="equipment.html" class="shebei">
+        <span class="icon icon-shebei"></span>
+        设备管理
+    </a>
+</section>
+
+<script src="lib/jquery.min.js"></script>
+<script>
+    $(function(){
+        var payTypeFlag = true; // true:微信支付  false:账户余额支付
+
+        $('#payTypeList>li').click(function(){
+            $(this).find('a').addClass('cur').parent().siblings().find('a').removeClass('cur');
+            payTypeFlag = !payTypeFlag;
+            console.log(payTypeFlag);
+        });
+
+    })
+</script>
+</body>
+</html>

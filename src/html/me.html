@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>泽钛造水</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" viewport-fit="cover"/>
+    <link rel="stylesheet" href="css/me.css">
+    <script src="js/index.js"></script>
+</head>
+<body>
+
+<section id="me">
+    <div class="info">
+        <div class="inner">
+            <div class="headImg">
+                <img src="images/headImg.jpg">
+            </div>
+            <div class="equipment">
+                <span class="name">cl1ff</span>
+                <span class="equipmentNum">（1个设备）</span>
+            </div>
+        </div>
+    </div>
+    <div class="money">
+        <div class="inner">
+            <!-- 余额 -->
+            <div class="balance">
+                <p class="num mainColor">0</p>
+                <p class="name">账户余额</p>
+            </div>
+
+            <div class="cut-line">
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+                <span class="block"></span>
+            </div>
+            <!-- 押金 -->
+            <div class="deposit">
+                <p class="num mainColor">0</p>
+                <p class="name">押金</p>
+            </div>
+        </div>
+    </div>
+    <section class="order">
+        <div class="inner">
+            <a href="order.html" class="row">
+                <p>预约订单</p>
+                <span class="icon icon1"></span>
+            </a>
+            <a href="order.html" class="row">
+                <p>试用订单</p>
+                <span class="icon icon2"></span>
+            </a>
+            <a href="address.html" class="row">
+                <p>收货地址</p>
+                <span class="icon icon3"></span>
+            </a>
+        </div>
+    </section>
+    <a id="logoOut" href="javascript:;" class="btn btn-quit">退出登录</a>
+</section>
+
+<section class="tabBar">
+    <a href="index.html" class="home">
+        <span class="icon icon-home"></span>
+        首页
+    </a>
+    <a href="order.html" class="yuyue">
+        <span class="icon icon-yuyue"></span>
+        预约
+    </a>
+    <a href="me.html" class="me">
+        <span class="icon icon-me"></span>
+        个人中心
+    </a>
+    <a href="equipment.html" class="shebei">
+        <span class="icon icon-shebei"></span>
+        设备管理
+    </a>
+</section>
+
+
+<script src="lib/jquery.min.js"></script>
+<script>
+    $(function () {
+
+        $('#logoOut').click(function(e){
+            e.preventDefault();
+            //  to-do
+            alert('退出登录');
+        });
+
+    })
+</script>
+</body>
+</html>

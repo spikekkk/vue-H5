@@ -1,0 +1,375 @@
+@charset "UTF-8";
+/* 初始化*/
+html {
+  overflow-x: auto;
+  overflow-y: auto; }
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+input {
+  outline: none; }
+
+img {
+  border: 0; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style: none; }
+
+h2 {
+  font-size: 18px; }
+
+body {
+  color: #333;
+  background-color: #fff;
+  font-family: "PingFangSC-Regular", "sans-serif", "Arial", "Microsoft Yahei", "微软雅黑", "SimHei";
+  font-size: 14px;
+  position: relative; }
+
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  font-size: 0; }
+
+.mainColor {
+  color: #0076ff !important; }
+
+.btn {
+  border: none;
+  border-radius: 20px;
+  width: 90%;
+  height: 40px;
+  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-top: 16px;
+  margin-left: 5%;
+  background: -webkit-linear-gradient(left, #10a2ff, #107fff);
+  /* Safari 5.1 - 6.0 */
+  background: linear-gradient(to right, #10a2ff, #107fff);
+  /* 标准的语法 */
+  box-shadow: 0 2px 10px rgba(51, 129, 205, 0.4); }
+
+.navBar {
+  position: fixed;
+  top: 0;
+  background: #0076fe;
+  width: 100%;
+  height: 44px; }
+  .navBar .back {
+    width: 22px;
+    height: 22px;
+    display: block;
+    background: url(../images/icon-navBar-back.png);
+    background-size: 22px 22px;
+    position: absolute;
+    top: 11px;
+    left: 10px; }
+  .navBar .navBar-tit {
+    color: #ffffff;
+    text-align: center;
+    line-height: 44px;
+    font-size: 14px; }
+  .navBar .navBar-tit.icon1::before {
+    content: '';
+    display: inline-block;
+    width: 11px;
+    height: 14px;
+    margin-right: 6px;
+    background: url(../images/icon-navBar-tit1.png);
+    background-size: 11px 14px;
+    position: relative;
+    top: 1px; }
+  .navBar .navBar-tit.icon2::before {
+    content: '';
+    display: inline-block;
+    width: 11px;
+    height: 14px;
+    margin-right: 6px;
+    background: url(../images/icon-navBar-tit2.png);
+    background-size: 11px 14px;
+    position: relative;
+    top: 1px; }
+  .navBar .navBar-tit.icon3::before {
+    content: '';
+    display: inline-block;
+    width: 11px;
+    height: 14px;
+    margin-right: 6px;
+    background: url(../images/icon-navBar-tit3.png);
+    background-size: 11px 14px;
+    position: relative;
+    top: 1px; }
+  .navBar .navBar-tit.icon4::before {
+    content: '';
+    display: inline-block;
+    width: 11px;
+    height: 14px;
+    margin-right: 6px;
+    background: url(../images/icon-navBar-tit4.png);
+    background-size: 11px 14px;
+    position: relative;
+    top: 2px; }
+  .navBar .navBar-tit.icon5::before {
+    content: '';
+    display: inline-block;
+    width: 11px;
+    height: 14px;
+    margin-right: 6px;
+    background: url(../images/icon-navBar-tit5.png);
+    background-size: 11px 14px; }
+  .navBar .navBar-tit.icon6::before {
+    content: '';
+    display: inline-block;
+    width: 11px;
+    height: 14px;
+    margin-right: 6px;
+    background: url(../images/icon-navBar-tit6.png);
+    background-size: 11px 14px;
+    position: relative;
+    top: 1px; }
+
+.tabBar {
+  height: 49px;
+  width: 100%;
+  background: #0076fe;
+  position: fixed;
+  bottom: 0;
+  font-size: 0; }
+  .tabBar a {
+    display: inline-block;
+    width: 25%;
+    height: 49px;
+    font-size: 10px;
+    color: #ffffff;
+    text-align: center; }
+    .tabBar a .icon {
+      width: 22px;
+      height: 22px;
+      display: block;
+      margin-top: 5px;
+      margin-bottom: 2px;
+      font-size: 0;
+      position: relative;
+      left: 50%;
+      margin-left: -11px;
+      background-size: 22px 22px; }
+    .tabBar a .icon-home {
+      background-image: url(../images/icon-tabbar-home.png); }
+    .tabBar a .icon-yuyue {
+      background-image: url(../images/icon-tabbar-yuyue.png); }
+    .tabBar a .icon-me {
+      background-image: url(../images/icon-tabbar-me.png); }
+    .tabBar a .icon-shebei {
+      background-image: url(../images/icon-tabbar-shebei.png); }
+
+#home, #me, #order, #cartridge, #waterConsumption, #equMain {
+  padding-bottom: 49px; }
+
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .tabBar {
+    height: 83px; }
+  #home, #me, #order, #topUp, #pay, #cartridge, #waterConsumption, #equMain {
+    padding-bottom: 83px; }
+  .price {
+    bottom: 83px !important; } }
+
+.errTip {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.1); }
+  .errTip .inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .errTip p {
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    color: #ffffff;
+    font-size: 18px;
+    width: 5rem;
+    line-height: 50px;
+    border-radius: 5px;
+    position: relative;
+    top: -50px;
+    -webkit-transition: all 0.75s;
+    transition: all 0.75s;
+    -webkit-animation: myScale 0.75s;
+    animation: myScale 0.75s; }
+
+@keyframes myScale {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0); }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1); } }
+
+#pay {
+  padding-top: 44px;
+  padding-bottom: 59px;
+  max-width: 670px;
+  margin: 0 auto; }
+
+.inner {
+  padding: 10px; }
+
+.topPrice {
+  height: 3.89rem;
+  width: 100%;
+  background: #0076fe;
+  position: relative;
+  color: #ffffff;
+  border-radius: 5px;
+  text-align: center;
+  overflow: hidden; }
+  .topPrice .bg1, .topPrice .bg2 {
+    height: 3.8rem;
+    width: 42.97rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url(../images/11.png);
+    background-size: cover; }
+  .topPrice .bg2 {
+    -webkit-transform: translate3d(-20rem, 0, 0);
+    transform: translate3d(-20rem, 0, 0); }
+  .topPrice .content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .topPrice .tit {
+    display: inline-block;
+    font-size: 12px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 0.33rem; }
+  .topPrice .price {
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 62px; }
+  .topPrice .price::before {
+    content: '¥';
+    color: #ffffff;
+    font-size: 15px;
+    position: relative;
+    top: -30px;
+    left: 0;
+    margin-right: 2px; }
+  .topPrice .desc {
+    font-size: 10px; }
+
+@-webkit-keyframes moveBgL {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    -webkit-transform: translate3d(-20rem, 0, 0);
+    transform: translate3d(-20rem, 0, 0); } }
+
+@keyframes moveBgL {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    -webkit-transform: translate3d(-20rem, 0, 0);
+    transform: translate3d(-20rem, 0, 0); } }
+
+@-webkit-keyframes moveBgR {
+  from {
+    -webkit-transform: translate3d(-20rem, 0, 0);
+    transform: translate3d(-20rem, 0, 0); }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes moveBgR {
+  from {
+    -webkit-transform: translate3d(-20rem, 0, 0);
+    transform: translate3d(-20rem, 0, 0); }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+.moveL {
+  -webkit-animation: moveBgL 5s linear infinite alternate;
+  animation: moveBgL 5s linear infinite alternate; }
+
+.moveR {
+  -webkit-animation: moveBgR 8s linear infinite alternate;
+  animation: moveBgR 8s linear infinite alternate; }
+
+.payType .payType-tit {
+  line-height: 33px;
+  color: #121214;
+  border-bottom: 1px dashed #9ccaff;
+  font-size: 12px;
+  margin-bottom: 3px; }
+
+.payType li {
+  border-bottom: 1px solid #e3e3e3; }
+
+.payType li:nth-last-of-type(1) {
+  border: none; }
+
+.payType a {
+  display: block;
+  line-height: 44px;
+  font-size: 15px;
+  color: #121214;
+  position: relative; }
+
+.payType a::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  top: 5px;
+  margin-right: 10px;
+  background-size: cover;
+  background-image: url(../images/icon-pay-other.png); }
+
+.payType .wx-pay::before {
+  background-image: url(../images/icon-pay-wx.png); }
+
+.payType .typeStatus {
+  width: 17px;
+  height: 17px;
+  border: 1px solid #3090ff;
+  display: inline-block;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  top: 13px;
+  box-sizing: border-box; }
+
+.payType a.cur .typeStatus {
+  border: 5px solid #3090ff;
+  box-shadow: 0 5px 5px rgba(31, 142, 250, 0.4); }
+
+.btn-pay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.8667rem;
+  width: 100%;
+  margin-left: 0; }

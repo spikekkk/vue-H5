@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>泽钛造水</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" viewport-fit="cover"/>
+    <link rel="stylesheet" href="css/topUp.css">
+    <script src="js/index.js"></script>
+</head>
+<body>
+
+<!-- nav bar -->
+<nav class="navBar">
+    <p class="navBar-tit icon2">水量充值</p>
+    <a href="#" class="back" onclick="javascript:history.back(-1)"></a>
+</nav>
+
+<!-- content -->
+<section id="topUp">
+    <div class="inner">
+        <div class="residue">
+            <p class="residueName">剩余水量</p>
+            <p class="residueNum">745L</p>
+        </div>
+        <div class="tabs">
+            <a href="javascript:;" class="tab js-tab cur">
+                <p class="type1">水量充值</p>
+                <p class="desc">（每月0.01元）</p>
+            </a>
+            <a href="javascript:;" class="tab js-tab">
+                <p class="type2">包月充值</p>
+                <p class="desc">（每天0.01元）</p>
+            </a>
+        </div>
+        <div class="tabContent">
+            <ul id="typeList">
+                <li>
+                    <a href="javascript:;" class="js-tabContent cur">
+                        <p class="type">2元=1L水</p>
+                        <p class="desc">（充2元送25水费）</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="js-tabContent">
+                        <p class="type">1元=10L水</p>
+                        <p class="desc">（充1元送100水费）</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="price">
+            <p>实付总金额：¥<span class="priceNum">3.00</span></p>
+            <a href="equipment-pay.html" class="pay">支付</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- tab bar -->
+<section class="tabBar">
+    <a href="index.html" class="home">
+        <span class="icon icon-home"></span>
+        首页
+    </a>
+    <a href="order.html" class="yuyue">
+        <span class="icon icon-yuyue"></span>
+        预约
+    </a>
+    <a href="me.html" class="me">
+        <span class="icon icon-me"></span>
+        个人中心
+    </a>
+    <a href="equipment.html" class="shebei">
+        <span class="icon icon-shebei"></span>
+        设备管理
+    </a>
+</section>
+
+<script src="lib/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('.js-tab').click(function (e) {
+            e.preventDefault();
+            $(this).addClass('cur').siblings().removeClass('cur');
+        });
+
+        $('#typeList>li').click(function () {
+            $(this).find('a').addClass('cur').parent().siblings().find('a').removeClass('cur');
+        });
+    })
+</script>
+</body>
+</html>
