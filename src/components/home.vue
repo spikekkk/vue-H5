@@ -1,11 +1,16 @@
 <template>
-
+	<tab-bar></tab-bar>
+  <router-view/>
 </template>
 
 <script>
-    export default {
-        name: "home"
-    }
+	import tabBar from "./common/tab-bar"
+	export default {
+		name: "home",
+		components: {
+			tabBar
+		}
+	}
 </script>
 
 <style scoped>

@@ -15,10 +15,11 @@ const routes = [{
   path: "/home",
   name: "home",
   component: resolve => require(["../components/home.vue"], resolve),
-//   children:[{
-//     path:"/",
-//     component:resolve => require(["../components/pages/index.vue"],resolve)
-//   }]
+  children:[{
+    path:"/",
+    name:"index",
+    component:resolve => require(["../components/pages/home/index.vue"],resolve)
+  }]
 }]
 
 const router = new Router({
