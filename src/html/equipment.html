@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>泽钛造水</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" viewport-fit="cover"/>
+    <link rel="stylesheet" href="css/equipment.css">
+    <script src="js/index.js"></script>
+</head>
+<body>
+
+<!-- content -->
+<section id="equipment">
+    <div class="inner">
+        <!-- -->
+        <div class="myEquipment">
+            <div class="litre">
+                <p class="litre-num">3.99L</p>
+                <p class="litre-detail">今日使用净水量，剩余998L </p>
+            </div>
+            <div class="ctrl">
+                <a href="javascript:;" class="btn-transparency delEqt">删除设备</a>
+                <a href="javascript:;" class="btn-transparency addEqt">添加设备</a>
+            </div>
+        </div>
+
+        <!-- 设备数量 -->
+        <div class="eqtNum">
+            <div class="content">
+                <p class="num">共 <span id="num">2</span> 台家中智能设备</p>
+                <p class="name">泽钛造水</p>
+            </div>
+        </div>
+
+        <!-- 设备列表 -->
+        <ul class="eqtList">
+            <li>
+                <div class="container">
+
+                    <div class="eqt-info">
+                        <a href="equipment-main.html" class="eqt-icon"></a>
+                        <div class="right">
+                            <a href="javascript:;" onclick="showAlert()">点击修改设备名称</a>
+                            <p class="eqt-desc">设备在线</p>
+                        </div>
+                    </div>
+
+                    <div class="eqt-ctrl">
+                        <a href="equipment-topUp.html" class="btn btn-small">充值</a>
+                        <a href="javascript:;" class="btn btn-small">报修</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="container">
+                    <div class="eqt-info">
+                        <a href="equipment-main.html" class="eqt-icon"></a>
+                        <div class="right">
+                            <a href="javascript:;" onclick="showAlert()">点击修改设备名称</a>
+                            <p class="eqt-desc">设备在线</p>
+                        </div>
+                    </div>
+                    <div class="eqt-ctrl">
+                        <a href="equipment-topUp.html" class="btn btn-small">充值</a>
+                        <a href="javascript:;" class="btn btn-small">报修</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <!--ul>li{$}*50-->
+    </div>
+</section>
+
+<!-- tab bar -->
+<section class="tabBar">
+    <a href="index.html" class="home">
+        <span class="icon icon-home"></span>
+        首页
+    </a>
+    <a href="order.html" class="yuyue">
+        <span class="icon icon-yuyue"></span>
+        预约
+    </a>
+    <a href="me.html" class="me">
+        <span class="icon icon-me"></span>
+        个人中心
+    </a>
+    <a href="equipment.html" class="shebei">
+        <span class="icon icon-shebei"></span>
+        设备管理
+    </a>
+</section>
+
+
+<div id="alert-mask" class="alert-mask" style="display: none">
+    <div class="alert-panel">
+        <div class="content">
+            <p class="tit">确定要修改设备名称吗？</p>
+            <input type="text">
+            <div class="btns clear">
+                <div id="btn-cancel" class="btn btn-cancel" onclick="hideAlert()">取消</div>
+                <div id="btn-confirm" class="btn btn-confirm" onclick="hideAlert()">确定</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="lib/jquery.min.js"></script>
+<script>
+    function showAlert(){
+        $('#alert-mask').show();
+    }
+    function hideAlert(){
+        $('#alert-mask').hide();
+    }
+</script>
+</body>
+</html>
