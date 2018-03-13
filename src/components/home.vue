@@ -1,6 +1,6 @@
 <template>
 	<tab-bar></tab-bar>
-  <router-view/>
+  <!--<router-view/>-->
 </template>
 
 <script>
