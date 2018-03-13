@@ -17,7 +17,6 @@ const routes = [{
   component: resolve => require(["../components/home.vue"], resolve),
   children:[{
     path:"/",
-    name:"index",
     component:resolve => require(["../components/pages/home/index.vue"],resolve)
   }]
 }]

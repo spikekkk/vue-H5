@@ -3,7 +3,7 @@
 		<template v-for="(item,index) in nav">
 			<router-link :to="item.path" :class="item.className" :keys="index" :index="index">
 				<span class="icon" :class="item.icon"></span>
-        {{ item.text }}
+        		{{ item.text }}
 			</router-link>
 		</template>
 	</section>
@@ -18,7 +18,7 @@
 					text: "首页",
 					icon: "icon-home",
 					className: "home",
-					path: "/"
+					path: "/home"
 				}, {
 					text: "预约",
 					icon: "icon-yuyue",
