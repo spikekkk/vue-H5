@@ -34,7 +34,7 @@
 						</div>
 
 						<div class="eqt-ctrl">
-							<a href="equipment-topUp.html" class="btn btn-small">充值</a>
+							<a href="/home/equipment-topUp" class="btn btn-small">充值</a>
 							<a href="javascript:;" class="btn btn-small">报修</a>
 						</div>
 					</div>

@@ -28,8 +28,23 @@ const routes = [{
     path:"/home/me",
     component:resolve => require(["../components/pages/me.vue"],resolve)
   },{
+  	path:"/home/address",
+    component:resolve => require(["../components/pages/address.vue"],resolve)
+  },{
+  	path:"/home/address-edit",
+    component:resolve => require(["../components/pages/address-edit.vue"],resolve)
+  },{
     path:"/home/equipment",
     component:resolve => require(["../components/pages/equipment.vue"],resolve)
+  },{
+    path:"/home/equipment-topUp",
+    component:resolve => require(["../components/pages/equipment-topUp.vue"],resolve)
+  },{
+    path:"/home/equipment-pay",
+    component:resolve => require(["../components/pages/equipment-pay.vue"],resolve)
+  },{
+  	path:"/home/equipment-main",
+    component:resolve => require(["../components/pages/equipment-main.vue"],resolve)
   }]
 }]
 

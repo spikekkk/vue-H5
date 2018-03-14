@@ -5,7 +5,7 @@
 				<img src="../assets/images/logo.png" class="logo">
 			</div>
 
-			<form action="">
+			<div>
 				<div class="formLine">
 					<p>手机号</p>
 					<input id="phoneNum" type="tel" placeholder="请输入手机号">
@@ -15,8 +15,8 @@
 					<p>验证码</p>
 					<input id="codeNum" type="text" maxlength="6" pattern="[0-9]*" placeholder="请输入验证码">
 				</div>
-				<input id="btn-login" class="btn btn-login" type="submit" value="登录">
-			</form>
+				<input id="btn-login" class="btn btn-login" type="submit" value="登录" @click="login">
+			</div>
 		</section>
 
 		<!-- 错误提示 -->
@@ -31,7 +31,12 @@
 
 <script>
 	export default {
-		name: "login"
+		name: "login",
+		methods:{
+			login(){
+				this.$router.push("/home")
+			}
+		}
 	}
 </script>
 
