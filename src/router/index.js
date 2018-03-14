@@ -45,6 +45,12 @@ const routes = [{
   },{
   	path:"/home/equipment-main",
     component:resolve => require(["../components/pages/equipment-main.vue"],resolve)
+  },{
+  	path:"/home/equipment-water",
+    component:resolve => require(["../components/pages/equipment-water.vue"],resolve)
+  },{
+  	path:"/home/equipment-cartridge",
+    component:resolve => require(["../components/pages/equipment-cartridge.vue"],resolve)
   }]
 }]
 

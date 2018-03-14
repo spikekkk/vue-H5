@@ -50,10 +50,10 @@
 					</section>
 				</div>
 
-				<a class="aside1" href="equipment-cartridge.html">滤芯使用</a>
+				<a class="aside1" href="/home/equipment-cartridge">滤芯使用</a>
 				<div class="aside2">
-					<a class="asideL" href="equipment-waterConsumption.html">用水量</a>
-					<a class="asideR" href="equipment-pay.html">用水充值</a>
+					<a class="asideL" href="/home/equipment-water">用水量</a>
+					<a class="asideR" href="/home/equipment-pay">用水充值</a>
 				</div>
 
 			</div>
