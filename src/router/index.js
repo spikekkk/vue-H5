@@ -16,8 +16,20 @@ const routes = [{
   name: "home",
   component: resolve => require(["../components/home.vue"], resolve),
   children:[{
-    path:"/",
-    component:resolve => require(["../components/pages/home/index.vue"],resolve)
+  	path:"/",
+  	redirect:"/home/index"
+  },{
+    path:"/home/index",
+    component:resolve => require(["../components/pages/index.vue"],resolve)
+  },{
+    path:"/home/yuyue",
+    component:resolve => require(["../components/pages/yuyue.vue"],resolve)
+  },{
+    path:"/home/me",
+    component:resolve => require(["../components/pages/me.vue"],resolve)
+  },{
+    path:"/home/equipment",
+    component:resolve => require(["../components/pages/equipment.vue"],resolve)
   }]
 }]
 

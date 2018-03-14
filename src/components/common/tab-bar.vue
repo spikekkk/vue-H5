@@ -18,22 +18,22 @@
 					text: "首页",
 					icon: "icon-home",
 					className: "home",
-					path: "/home"
+					path: "/home/index"
 				}, {
 					text: "预约",
 					icon: "icon-yuyue",
 					className: "yuyue",
-					path: "/"
+					path: "/home/yuyue"
 				}, {
 					text: "个人中心",
 					icon: "icon-me",
 					className: "me",
-					path: "/"
+					path: "/home/me"
 				}, {
 					text: "设备管理",
 					icon: "icon-shebei",
 					className: "shebei",
-					path: "/"
+					path: "/home/equipment"
 				}]
 			}
 		}
