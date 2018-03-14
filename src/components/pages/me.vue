@@ -39,11 +39,11 @@
 		</div>
 		<section class="order">
 			<div class="inner">
-				<a href="/home/order" class="row">
+				<a href="/home/yuyue" class="row">
 					<p>预约订单</p>
 					<span class="icon icon1"></span>
 				</a>
-				<a href="/home/order" class="row">
+				<a href="/home/yuyue" class="row">
 					<p>试用订单</p>
 					<span class="icon icon2"></span>
 				</a>

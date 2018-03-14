@@ -41,8 +41,79 @@
 </template>
 
 <script>
+	import "@/html/lib/jquery.min.js";
+	import "@/html/lib/circle-progress.js"
 	export default {
-		name: ""
+		name: "",
+		data() {
+			return {
+
+			}
+		},
+		mounted() {
+			this.test()
+		},
+		methods: {
+			test() {
+				var value1 = '0.83';
+				var value2 = '0.9';
+				var value3 = '0.95';
+
+				// 初始化三个图表
+				var circle1Options = {
+					value: value1,
+					size: 186,
+					fill: {
+						gradient: ["#0887ff", "#31e1fb"],
+						gradientAngle: -1.5
+					},
+					animation: {
+						duration: 1000 * value1
+					},
+					startAngle: -1.55,
+					lineCap: 'round',
+					emptyFill: '#fff'
+				};
+				var circle2Options = {
+					value: value2,
+					size: 115,
+					fill: {
+						gradient: ["#0887ff", "#31e1fb"],
+						gradientAngle: -1.55
+					},
+					animation: {
+						duration: 1000 * value2
+					},
+					lineCap: 'round',
+					startAngle: -1.55,
+					emptyFill: '#fff'
+				};
+				var circle3Options = {
+					value: value3,
+					size: 115,
+					fill: {
+						gradient: ["#0887ff", "#31e1fb"],
+						gradientAngle: -1.55
+					},
+					animation: {
+						duration: 1000 * value3
+					},
+					lineCap: 'round',
+					startAngle: -1.55,
+					emptyFill: '#fff'
+				};
+
+				$('#circle1').circleProgress(circle1Options).on('circle-animation-progress', function(event, progress, stepValue) {
+					$(this).find('strong').html(parseInt(100 * stepValue) + '<i>%</i>');
+				});
+				$('#circle2').circleProgress(circle2Options).on('circle-animation-progress', function(event, progress, stepValue) {
+					$(this).find('strong').html(parseInt(100 * stepValue) + '<i>%</i>');
+				});
+				$('#circle3').circleProgress(circle3Options).on('circle-animation-progress', function(event, progress, stepValue) {
+					$(this).find('strong').html(parseInt(100 * stepValue) + '<i>%</i>');
+				});
+			}
+		}
 	}
 </script>
 
