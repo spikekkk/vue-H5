@@ -1,101 +1,153 @@
 <template>
-	<div>
-		<section id="login">
-			<div class="logoWrap">
-				<img src="../assets/images/logo.png" class="logo">
-			</div>
+  <div>
+    <section id="login">
+      <mt-field
+        label="姓名"
+        placeholder="请输入姓名"
+        v-model="username"
+      ></mt-field>
+      <mt-field
+        label="手机号"
+        :state="phoneNumState"
+        placeholder="请输入手机号"
+        type="tel"
+        v-model="phone"
+      ></mt-field>
+      <mt-field
+        label="验证码"
+        placeholder="请输入验证码"
+        type="number"
+        v-model="verCode"
+      >
+        <mt-button type='primary'>获取验证码</mt-button>
 
-			<div>
-				<div class="formLine">
-					<p>手机号</p>
-					<input id="phoneNum" type="tel" placeholder="请输入手机号">
-					<a href="javascript:;" id="sendCode" class="sendCode">发送验证码</a>
-				</div>
-				<div class="formLine">
-					<p>验证码</p>
-					<input id="codeNum" type="text" maxlength="6" pattern="[0-9]*" placeholder="请输入验证码">
-				</div>
-				<input id="btn-login" class="btn btn-login" type="submit" value="登录" @click="login">
-			</div>
-		</section>
+      </mt-field>
 
-		<!-- 错误提示 -->
-		<section id="errTip" class="errTip">
-			<div class="inner">
-				<p id="errText" class="errText">手机号不正确！</p>
-			</div>
-		</section>
-	</div>
+      <mt-field
+        label="畅玩卡卡号"
+        placeholder="请输入畅玩卡卡号"
+        type="number"
+        v-model="cardNum"
+        :state='cardNumState'
+      ></mt-field>
+      <mt-field
+        label="激活码"
+        placeholder="请输入畅玩卡激活码"
+        type="number"
+        v-model="activeNum"
+      ></mt-field>
+
+      <mt-button
+        size="large"
+        type='primary'
+        @click="submit"
+      >激活账号</mt-button>
+    </section>
+
+  </div>
 
 </template>
 
 <script>
-	export default {
-		name: "login",
-		methods:{
-			login(){
-				this.$router.push("/home")
-			}
-		}
-	}
+export default {
+  name: "login",
+  data() {
+    return {
+
+      phone: '',
+      verCode: '',
+      cardNum: '',
+      activeNum: "",
+      phoneNumState: '',
+      cardNumState: '',
+    }
+  },
+  watch: {
+    phone(newVal, oldVal) {
+      if (this.tools(newVal)) {
+        this.phoneNumState = 'success'
+      } else {
+        this.phoneNumState = 'error'
+      }
+      if (newVal == '') { // 如果输入为空，取消状态显示
+        this.phoneNumState = ''
+      }
+    },
+
+    cardNum(newVal, oldVal) {
+      if (newVal.length === 12) {
+        this.cardNumState = 'success'
+      } else {
+        this.cardNumState = 'error'
+      }
+      if (newVal == '') { // 如果输入为空，取消状态显示
+        this.cardNumState = ''
+      }
+    }
+  },
+  methods: {
+    submit() {
+      if (this.phoneNumState != 'success') {
+
+        Toast('请确保手机号是正确的')
+
+        return
+
+      }
+
+      if (this.cardNumState != 'success') {
+
+        Toast('请确保验证码的正确性')
+
+        return
+
+      }
+
+
+      // 提交数据
+
+      this.$axios({
+        method: 'post',
+        url: 'api',
+        data: this.qs.stringify({    //这里是发送给后台的数据
+          userId: this.userId,
+          token: this.token,
+        })
+      }).then((response) => {          //这里使用了ES6的语法
+        Toast('注册成功')
+
+        this.phoneNum = ''
+
+        this.cardNumState = ''
+
+        this.phoneNumState = ''
+        this.cardNum = ''
+
+
+        console.log(response)       //请求成功返回的数据
+      }).catch((error) => {
+
+        Toast('注册失败')
+        console.log(error)       //请求失败返回的数据
+      })
+
+
+    },
+    tools(val) {
+      let phoneReg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|166|198|199|(147))+\d{8})$/;
+      return phoneReg.test(val)
+    }
+
+  }
+}
 </script>
 
 <style scoped>
-	#login {
-		width: 100%;
-		height: 100%;
-		background: url("../assets/images/1.jpg") no-repeat center center;
-		background-size: cover;
-		position: relative;
-	}
-	
-	#login .logoWrap {
-		text-align: center;
-		padding-top: 70px;
-		margin-bottom: 42px;
-	}
-	
-	#login .logoWrap img {
-		width: 119px;
-	}
-	
-	#login .formLine {
-		padding: 0 30px;
-		position: relative;
-		margin-bottom: 10px;
-	}
-	
-	#login .formLine p {
-		line-height: 25px;
-		font-size: 12px;
-		color: #afb7bb;
-		letter-spacing: 2px;
-	}
-	
-	#login .formLine input {
-		color: #333333;
-		background: transparent;
-		caret-color: #0076ff;
-		border: none;
-		width: 100%;
-		line-height: 34px;
-		border-bottom: 1px solid #e0e9f3;
-	}
-	
-	#login .formLine .sendCode {
-		position: absolute;
-		right: 30px;
-		bottom: 8px;
-		display: block;
-		width: 92px;
-		height: 25px;
-		color: #ffffff;
-		line-height: 25px;
-		text-align: center;
-		font-size: 13px;
-		background: -webkit-linear-gradient(left, #10a2ff, #107fff);
-		/* Safari 5.1 - 6.0 */
-		background: linear-gradient(to right, #10a2ff, #107fff);
-		/* 标准的语法 */
-	}
+#login {
+  width: 100%;
+  height: 100%;
+  /* background: url("../assets/images/1.jpg") no-repeat center center; */
+  background-size: cover;
+  position: relative;
+}
 </style>
