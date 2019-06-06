@@ -1,6 +1,7 @@
 <template>
   <div>
     <section id="login">
+      <mt-header title="激活账号" />
       <mt-field
         label="姓名"
         placeholder="请输入姓名"
@@ -37,23 +38,26 @@
         v-model="activeNum"
       ></mt-field>
 
+    </section>
+    <section class="footer_btn">
       <mt-button
-        size="large"
+        size="normal"
         type='primary'
         @click="submit"
       >激活账号</mt-button>
-    </section>
 
+    </section>
   </div>
 
 </template>
 
 <script>
+import { MessageBox } from 'mint-ui';
 export default {
   name: "login",
   data() {
     return {
-
+      username: '',
       phone: '',
       verCode: '',
       cardNum: '',
@@ -88,16 +92,14 @@ export default {
   methods: {
     submit() {
       if (this.phoneNumState != 'success') {
-
-        Toast('请确保手机号是正确的')
+        this.$messagebox.alert('提示', '请确保手机号是正确的')
 
         return
-
       }
 
       if (this.cardNumState != 'success') {
+        this.$messagebox.alert('提示', '请确保验证码的正确性')
 
-        Toast('请确保验证码的正确性')
 
         return
 
@@ -114,7 +116,9 @@ export default {
           token: this.token,
         })
       }).then((response) => {          //这里使用了ES6的语法
-        Toast('注册成功')
+
+
+        this.$messagebox.alert('提示', '注册成功')
 
         this.phoneNum = ''
 
@@ -127,7 +131,7 @@ export default {
         console.log(response)       //请求成功返回的数据
       }).catch((error) => {
 
-        Toast('注册失败')
+        this.$messagebox.alert('提示', '请求失败')
         console.log(error)       //请求失败返回的数据
       })
 
@@ -149,5 +153,13 @@ export default {
   /* background: url("../assets/images/1.jpg") no-repeat center center; */
   background-size: cover;
   position: relative;
+}
+
+.footer_btn {
+  text-align: center;
+}
+
+.footer_btn .mint-button {
+  width: 200px;
 }
 </style>
