@@ -10,6 +10,8 @@ import "mint-ui/lib/style.css"
 Vue.use(MintUI)
 import axios from "axios"
 Vue.prototype.$axios = axios
+axios.defaults.baseURL = "/api"
+axios.defaults.headers.post["Content-Type"] = "application/json"
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
