@@ -20,7 +20,11 @@
         type="number"
         v-model="verCode"
       >
-        <mt-button type='primary'>获取验证码</mt-button>
+        <mt-button
+          type='primary'
+          @click="getSms"
+          :disabled='isVerCode'
+        ><span v-if='isVerCode'> {{ count }}s后重新获取 </span> <span v-else>获取验证码</span></mt-button>
 
       </mt-field>
 
@@ -53,10 +57,15 @@
 
 <script>
 import { MessageBox } from 'mint-ui';
+import { test } from '../api/index'
+import axios from 'axios'
+axios.defaults.headers['Content-Type'] = 'application/json'
 export default {
   name: "login",
   data() {
     return {
+      isVerCode: false,
+      count: '',
       username: '',
       phone: '',
       verCode: '',
@@ -90,40 +99,92 @@ export default {
     }
   },
   methods: {
+    getSms() {
+      if (this.phoneNumState !== 'success') {
+        this.$messagebox.alert('请输入正确的手机号')
+      } else {
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
+        const data = JSON.stringify({  //这里是发送给后台的数据
+          msgCode: 'SMS_152283583',
+          receiveMobile: this.phone
+        })
+
+
+        // axios
+        //   .post('http://192.168.1.56:8981/sms/sendMessage', data, config)
+        //   .then(function (res) {
+        //     console.log('获取验证码成功', res)
+        //   })
+        // test(data).then(res => {
+        //   if (res.errorCode === 9000) {
+        //     console.log('res--->', res)
+        //   } else {
+        //     this.$message.error(res.errorMessage)
+        //   }
+        // })
+        this.$axios({
+          method: 'post',
+          url: 'http://192.168.1.56:8981/sms/sendMessage',
+          data: data
+        }).then((response) => {
+          this.$messagebox.alert('验证码', '获取验证码成功')
+          const TIME_COUNT = 60
+          if (!this.timer) {
+            this.count = TIME_COUNT
+            this.isVerCode = true
+            this.timer = setInterval(() => {
+              if (this.count > 0 && this.count <= TIME_COUNT) {
+                this.count--
+              } else {
+                this.isVerCode = false
+                clearInterval(this.timer)
+                this.timer = null
+              }
+            }, 1000)
+          }
+          console.log(response)       //请求成功返回的数据
+        }).catch((error) => {
+
+          this.$messagebox.alert('提示', '请求失败')
+          console.log(error)       //请求失败返回的数据
+        })
+      }
+    },
     submit() {
       if (this.phoneNumState != 'success') {
         this.$messagebox.alert('提示', '请确保手机号是正确的')
-
         return
       }
-
       if (this.cardNumState != 'success') {
         this.$messagebox.alert('提示', '请确保验证码的正确性')
-
-
         return
-
       }
-
-
       // 提交数据
-
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
       this.$axios({
+        config,
         method: 'post',
-        url: 'api',
-        data: this.qs.stringify({    //这里是发送给后台的数据
-          userId: this.userId,
-          token: this.token,
+        url: 'http://192.168.1.56:8981/spread/manage/makecard/activate',
+
+        data: JSON.stringify({    //这里是发送给后台的数据
+          name: this.username,
+          mobile: this.phone,
+          cardNumber: this.cardNum,
+          activationCode: this.activeNum
         })
       }).then((response) => {          //这里使用了ES6的语法
 
-
         this.$messagebox.alert('提示', '注册成功')
-
         this.phoneNum = ''
-
         this.cardNumState = ''
-
         this.phoneNumState = ''
         this.cardNum = ''
 
