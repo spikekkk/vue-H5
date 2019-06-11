@@ -17,7 +17,7 @@
       <mt-field
         label="验证码"
         placeholder="请输入验证码"
-        type="number"
+        type="string"
         v-model="verCode"
       >
         <mt-button
@@ -103,11 +103,6 @@ export default {
       if (this.phoneNumState !== 'success') {
         this.$messagebox.alert('请输入正确的手机号')
       } else {
-        const config = {
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        }
         const data = JSON.stringify({  //这里是发送给后台的数据
           msgCode: 'SMS_152283583',
           receiveMobile: this.phone
@@ -117,7 +112,6 @@ export default {
         this.$axios
           .post('/sms/sendMessage', data)
           .then((response) => {
-            this.$messagebox.alert('验证码', '获取验证码成功')
             const TIME_COUNT = 60
             if (!this.timer) {
               this.count = TIME_COUNT
@@ -156,21 +150,19 @@ export default {
         mobile: this.phone,
         nowVerifyCode: this.verCode
       }).then((res) => {
-        if (res.errorCode === 9000) {
+        if (res.data.errorCode === 9000) {
           postJsonFunc('/spread/manage/makecard/activate', JSON.stringify({    //这里是发送给后台的数据
             name: this.username,
             mobile: this.phone,
             cardNumber: this.cardNum,
             activationCode: this.activeNum
           })).then((response) => {          //这里使用了ES6的语法
-            if (response.errorCode === 9000) {
-              this.$messagebox.alert('提示', '注册成功')
-              this.phoneNum = ''
-              this.cardNumState = ''
-              this.phoneNumState = ''
-              this.cardNum = ''
+            if (response.data.errorCode === 9000) {
+              this.$messagebox.alert('', '激活成功').then(action => {
+                location.reload();
+              })
             } else {
-              this.$messagebox.alert(response.errorMessage, response.errorMessage)
+              this.$messagebox.alert('', response.data.errorMessage)
             }
           }).catch((error) => {
             this.$messagebox.alert('提示', '请求失败')
@@ -193,7 +185,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #login {
   width: 100%;
   height: 100%;
@@ -208,5 +200,8 @@ export default {
 
 .footer_btn .mint-button {
   width: 200px;
+}
+.mint-msgbox-btn {
+  font-size: 20px !important;
 }
 </style>
